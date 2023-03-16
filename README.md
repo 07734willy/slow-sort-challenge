@@ -25,7 +25,7 @@ The minimal number of moves to solve a normal Tower of Hanoi game of `N` rings i
 
 This means there's typically going to be either 5 or 6 valid pop/push moves (depending whether the ring on the left-most pillar can be placed back onto its same pillar), and occassionally more, up to 9, when there's duplicate sized rings. However, for what difficulty duplicates pose in branching, they compensate in search depth- its much, much faster to solve an Tower of Hanoi problem with duplicates than one of equal size without duplicates, so for the sake of simplicity of the worst-case time analysis, we'll assume the input is free of duplicates.
 
-This gives a starting complexity of a fixed-depth search as `O(6^(2^N))`. Each of these involve `O(N)` work (copying the stack-to-mutate). Due to the iterative deepening depth-first search, we do also search each depth `D` from `1` to `N`, which we can overestimate with another factor of `N`. This brings us to a total time complexity of `O(N^2 * 6^(2^N))`.
+This gives a starting complexity of a fixed-depth search as `O(6^(2^N))`. Each of these involve `O(N)` work (copying the stack-to-mutate). We do an iterative deepening depth-first search, from depth `1` to `N`, however due to the exponential nature of the search space, the deepest search alone dominates the complexity. This brings us to a total time complexity of `O(N * 6^(2^N))`.
 
 
 ### Runtime
